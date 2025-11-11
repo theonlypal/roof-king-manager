@@ -64,42 +64,42 @@ export default function GenerateReceiptModal({ job, selectedCharges, onClose }: 
   const total = selectedCharges.reduce((sum, charge) => sum + charge.amount + (charge.taxAmount || 0), 0);
 
   return (
-    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
-      <div className="bg-white rounded-lg p-6 max-w-md w-full">
-        <h2 className="text-xl font-bold mb-4">Generate & Send Receipt</h2>
+    <div className="fixed inset-0 bg-black bg-opacity-50 backdrop-blur-sm flex items-center justify-center p-4 z-50">
+      <div className="bg-royal-cream rounded-2xl shadow-warm-xl p-6 max-w-md w-full">
+        <h2 className="text-xl font-bold mb-4 text-royal-espresso">Generate & Send Receipt</h2>
 
         <div className="mb-4">
-          <p className="text-sm text-gray-600 mb-2">
+          <p className="text-sm text-royal-taupe mb-2">
             <span className="font-medium">Job:</span> {job.title}
           </p>
-          <p className="text-sm text-gray-600 mb-2">
+          <p className="text-sm text-royal-taupe mb-2">
             <span className="font-medium">Customer:</span> {job.customerName}
           </p>
-          <p className="text-sm text-gray-600 mb-2">
+          <p className="text-sm text-royal-taupe mb-2">
             <span className="font-medium">Selected Charges:</span> {selectedCharges.length}
           </p>
-          <p className="text-sm font-semibold">
+          <p className="text-sm font-semibold text-royal-espresso">
             Total: ${total.toFixed(2)}
           </p>
         </div>
 
         <div className="mb-4">
-          <label className="block text-sm font-medium mb-1">Customer Email</label>
+          <label className="block text-sm font-medium mb-2 text-royal-espresso">Customer Email</label>
           <input
             type="email"
             value={job.customerEmail}
             disabled
-            className="w-full border rounded px-3 py-2 bg-gray-100"
+            className="w-full bg-royal-stone border border-royal-stone rounded-lg px-4 py-2.5 transition-all duration-200"
           />
         </div>
 
         <div className="mb-4">
-          <label className="block text-sm font-medium mb-1">Office CC Email</label>
+          <label className="block text-sm font-medium mb-2 text-royal-espresso">Office CC Email</label>
           <input
             type="email"
             value={officeEmail}
             onChange={(e) => setOfficeEmail(e.target.value)}
-            className="w-full border rounded px-3 py-2"
+            className="w-full bg-royal-cream border border-royal-stone rounded-lg px-4 py-2.5 transition-all duration-200 focus:outline-none focus:border-crown-terracotta focus:shadow-warm"
           />
         </div>
 
@@ -107,14 +107,14 @@ export default function GenerateReceiptModal({ job, selectedCharges, onClose }: 
           <button
             onClick={onClose}
             disabled={sending}
-            className="px-4 py-2 border rounded hover:bg-gray-100 disabled:bg-gray-100"
+            className="px-6 py-2.5 border border-royal-stone rounded-lg text-royal-brown transition-all duration-200 hover:bg-royal-stone disabled:bg-royal-stone"
           >
             Cancel
           </button>
           <button
             onClick={handleGenerate}
             disabled={sending}
-            className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 disabled:bg-gray-400"
+            className="px-6 py-2.5 bg-crown-sunset text-white rounded-lg shadow-warm transition-all duration-200 hover:shadow-warm-lg hover:-translate-y-0.5 disabled:bg-gray-400"
           >
             {sending ? 'Generating...' : 'Generate & Send'}
           </button>

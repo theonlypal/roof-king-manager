@@ -24,8 +24,8 @@ export default function NewJob() {
 
   return (
     <div>
-      <h1 className="text-3xl font-bold mb-6">Create New Job</h1>
-      <div className="max-w-2xl bg-white rounded-lg shadow p-6">
+      <h1 className="text-3xl font-bold mb-6 text-royal-espresso">Create New Job</h1>
+      <div className="max-w-2xl bg-royal-beige rounded-lg shadow-warm p-6">
         <JobForm
           onSave={handleSave}
           onCancel={() => router.push('/dashboard')}

@@ -35,7 +35,7 @@ export default function ExtraChargesTable({
 
   if (charges.length === 0) {
     return (
-      <div className="text-center py-8 text-gray-500">
+      <div className="text-center py-8 text-royal-taupe">
         <p>No extra charges yet. Add one to get started.</p>
       </div>
     );
@@ -45,7 +45,7 @@ export default function ExtraChargesTable({
     <div className="overflow-x-auto">
       <table className="w-full border-collapse">
         <thead>
-          <tr className="bg-gray-100">
+          <tr className="bg-royal-beige">
             <th className="p-2 text-left">
               <input
                 type="checkbox"
@@ -63,7 +63,7 @@ export default function ExtraChargesTable({
         </thead>
         <tbody>
           {charges.map((charge) => (
-            <tr key={charge.id} className="border-t hover:bg-gray-50">
+            <tr key={charge.id} className="border-t hover:bg-royal-stone">
               <td className="p-2">
                 <input
                   type="checkbox"
@@ -82,7 +82,7 @@ export default function ExtraChargesTable({
                     {onEdit && (
                       <button
                         onClick={() => onEdit(charge)}
-                        className="text-blue-600 hover:underline text-sm"
+                        className="text-crown-terracotta hover:underline text-sm"
                       >
                         Edit
                       </button>
@@ -94,7 +94,7 @@ export default function ExtraChargesTable({
                             onDelete(charge.id);
                           }
                         }}
-                        className="text-red-600 hover:underline text-sm"
+                        className="text-accent-alert hover:underline text-sm"
                       >
                         Delete
                       </button>

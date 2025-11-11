@@ -1,3 +1,7 @@
+#!/bin/bash
+
+# Update globals.css
+cat > app/globals.css << 'EOF'
 @import "tailwindcss";
 
 :root {
@@ -57,3 +61,7 @@ body {
 * {
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
+EOF
+
+echo "✓ Updated globals.css"
+

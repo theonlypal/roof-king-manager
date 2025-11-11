@@ -1,3 +1,6 @@
+#!/bin/bash
+
+cat > app/dashboard/page.tsx << 'EOF'
 'use client';
 
 import { useState, useEffect } from 'react';
@@ -36,3 +39,6 @@ export default function Dashboard() {
     </div>
   );
 }
+EOF
+
+echo "✓ Updated dashboard/page.tsx"

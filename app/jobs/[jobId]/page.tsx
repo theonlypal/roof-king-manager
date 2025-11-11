@@ -96,16 +96,16 @@ export default function JobDetail() {
       <div className="mb-6">
         <button
           onClick={() => router.push('/dashboard')}
-          className="text-blue-600 hover:underline mb-2"
+          className="text-crown-terracotta hover:underline mb-2"
         >
           ← Back to Dashboard
         </button>
-        <h1 className="text-3xl font-bold">{job.title}</h1>
+        <h1 className="text-3xl font-bold text-royal-espresso">{job.title}</h1>
       </div>
 
       {editingJob ? (
-        <div className="bg-white rounded-lg shadow p-6 mb-6">
-          <h2 className="text-xl font-semibold mb-4">Edit Job</h2>
+        <div className="bg-royal-beige rounded-lg shadow-warm p-6 mb-6">
+          <h2 className="text-xl font-semibold mb-4 text-royal-espresso">Edit Job</h2>
           <JobForm
             job={job}
             onSave={handleUpdateJob}
@@ -113,19 +113,19 @@ export default function JobDetail() {
           />
         </div>
       ) : (
-        <div className="bg-white rounded-lg shadow p-6 mb-6">
+        <div className="bg-royal-beige rounded-lg shadow-warm p-6 mb-6">
           <div className="flex justify-between items-start mb-4">
-            <h2 className="text-xl font-semibold">Job Details</h2>
+            <h2 className="text-xl font-semibold text-royal-espresso">Job Details</h2>
             <div className="flex gap-2">
               <button
                 onClick={() => setEditingJob(true)}
-                className="px-3 py-1 text-sm border rounded hover:bg-gray-100"
+                className="px-3 py-1 text-sm border border-royal-stone rounded-lg transition-all duration-200 hover:bg-royal-stone"
               >
                 Edit
               </button>
               <button
                 onClick={handleDeleteJob}
-                className="px-3 py-1 text-sm text-red-600 border border-red-600 rounded hover:bg-red-50"
+                className="px-3 py-1 text-sm text-accent-alert border border-accent-alert rounded-lg transition-all duration-200 hover:bg-red-50"
               >
                 Delete
               </button>
@@ -133,34 +133,34 @@ export default function JobDetail() {
           </div>
           <dl className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
-              <dt className="font-medium text-gray-600">Customer Name</dt>
+              <dt className="font-medium text-royal-taupe">Customer Name</dt>
               <dd>{job.customerName}</dd>
             </div>
             <div>
-              <dt className="font-medium text-gray-600">Customer Email</dt>
+              <dt className="font-medium text-royal-taupe">Customer Email</dt>
               <dd>{job.customerEmail}</dd>
             </div>
             {job.customerPhone && (
               <div>
-                <dt className="font-medium text-gray-600">Customer Phone</dt>
+                <dt className="font-medium text-royal-taupe">Customer Phone</dt>
                 <dd>{job.customerPhone}</dd>
               </div>
             )}
             {job.siteAddress && (
               <div>
-                <dt className="font-medium text-gray-600">Site Address</dt>
+                <dt className="font-medium text-royal-taupe">Site Address</dt>
                 <dd>{job.siteAddress}</dd>
               </div>
             )}
             {job.initialEstimateAmount != null && (
               <div>
-                <dt className="font-medium text-gray-600">Initial Estimate</dt>
+                <dt className="font-medium text-royal-taupe">Initial Estimate</dt>
                 <dd>${job.initialEstimateAmount.toFixed(2)}</dd>
               </div>
             )}
             {job.notes && (
               <div className="md:col-span-2">
-                <dt className="font-medium text-gray-600">Notes</dt>
+                <dt className="font-medium text-royal-taupe">Notes</dt>
                 <dd>{job.notes}</dd>
               </div>
             )}
@@ -168,20 +168,20 @@ export default function JobDetail() {
         </div>
       )}
 
-      <div className="bg-white rounded-lg shadow p-6">
+      <div className="bg-royal-beige rounded-lg shadow-warm p-6">
         <div className="flex justify-between items-center mb-4">
-          <h2 className="text-xl font-semibold">Extra Charges ({charges.length})</h2>
+          <h2 className="text-xl font-semibold text-royal-espresso">Extra Charges ({charges.length})</h2>
           <button
             onClick={() => setAddingCharge(true)}
-            className="px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700"
+            className="px-6 py-2.5 bg-accent-success text-white rounded-lg shadow-warm transition-all duration-200 hover:shadow-warm-lg hover:-translate-y-0.5"
           >
             Add Extra Charge
           </button>
         </div>
 
         {addingCharge && (
-          <div className="mb-6 p-4 border rounded bg-gray-50">
-            <h3 className="font-semibold mb-3">New Extra Charge</h3>
+          <div className="mb-6 p-4 border border-royal-stone rounded-lg bg-royal-cream">
+            <h3 className="font-semibold mb-3 text-royal-espresso">New Extra Charge</h3>
             <ExtraChargeForm
               jobId={jobId}
               onSave={handleAddCharge}
@@ -191,8 +191,8 @@ export default function JobDetail() {
         )}
 
         {editingCharge && (
-          <div className="mb-6 p-4 border rounded bg-gray-50">
-            <h3 className="font-semibold mb-3">Edit Extra Charge</h3>
+          <div className="mb-6 p-4 border border-royal-stone rounded-lg bg-royal-cream">
+            <h3 className="font-semibold mb-3 text-royal-espresso">Edit Extra Charge</h3>
             <ExtraChargeForm
               jobId={jobId}
               charge={editingCharge}
@@ -211,18 +211,18 @@ export default function JobDetail() {
         />
 
         {selectedChargeIds.length > 0 && (
-          <div className="mt-4 p-4 bg-blue-50 border border-blue-200 rounded flex justify-between items-center">
+          <div className="mt-4 p-4 bg-royal-stone border border-royal-stone rounded-lg flex justify-between items-center">
             <div>
               <p className="font-semibold">
                 {selectedChargeIds.length} charge(s) selected
               </p>
-              <p className="text-sm text-gray-600">
+              <p className="text-sm text-royal-taupe">
                 Total: ${totalSelected.toFixed(2)}
               </p>
             </div>
             <button
               onClick={() => setShowReceiptModal(true)}
-              className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
+              className="px-6 py-2.5 bg-crown-sunset text-white rounded-lg shadow-warm transition-all duration-200 hover:shadow-warm-lg hover:-translate-y-0.5"
             >
               Generate Receipt
             </button>

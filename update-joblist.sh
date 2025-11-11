@@ -1,3 +1,6 @@
+#!/bin/bash
+
+cat > components/JobList.tsx << 'EOF'
 'use client';
 
 import Link from 'next/link';
@@ -52,3 +55,6 @@ export default function JobList({ jobs }: JobListProps) {
     </div>
   );
 }
+EOF
+
+echo "✓ Updated JobList.tsx"

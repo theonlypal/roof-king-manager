@@ -1,3 +1,7 @@
+#!/bin/bash
+
+# Update layout.tsx
+cat > app/layout.tsx << 'EOF'
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import Link from "next/link";
@@ -21,7 +25,7 @@ export const metadata: Metadata = {
 export default function RootLayout({
   children,
 }: Readonly<{
-  children: React.ReactNode;
+  children: React.NodeNode;
 }>) {
   return (
     <html lang="en">
@@ -50,3 +54,6 @@ export default function RootLayout({
     </html>
   );
 }
+EOF
+
+echo "✓ Updated layout.tsx"

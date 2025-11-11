@@ -58,34 +58,34 @@ export default function ExtraChargeForm({ jobId, charge, onSave, onCancel }: Ext
   };
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-4">
+    <form onSubmit={handleSubmit} className="space-y-5">
       <div>
-        <label className="block text-sm font-medium mb-1">Description *</label>
+        <label className="block text-sm font-medium mb-2 text-royal-espresso">Description *</label>
         <textarea
           required
           value={formData.description}
           onChange={(e) => setFormData({ ...formData, description: e.target.value })}
-          className="w-full border rounded px-3 py-2"
+          className="w-full bg-royal-cream border border-royal-stone rounded-lg px-4 py-2.5 transition-all duration-200 focus:outline-none focus:border-crown-terracotta focus:shadow-warm"
           rows={2}
           placeholder="e.g. Replace 3 sheets of rotten plywood"
         />
       </div>
 
       <div>
-        <label className="block text-sm font-medium mb-1">Category</label>
+        <label className="block text-sm font-medium mb-2 text-royal-espresso">Category</label>
         <div className="flex gap-2">
           <input
             type="text"
             value={formData.category}
             onChange={(e) => setFormData({ ...formData, category: e.target.value })}
-            className="flex-1 border rounded px-3 py-2"
+            className="flex-1 bg-royal-cream border border-royal-stone rounded-lg px-4 py-2.5 transition-all duration-200 focus:outline-none focus:border-crown-terracotta focus:shadow-warm"
             placeholder="e.g. Rotten decking repair"
           />
           <button
             type="button"
             onClick={handleSuggestCategory}
             disabled={suggestingCategory}
-            className="px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700 disabled:bg-gray-400"
+            className="px-6 py-2.5 bg-accent-copper text-white rounded-lg shadow-warm transition-all duration-200 hover:shadow-warm-lg hover:-translate-y-0.5 disabled:bg-gray-400"
           >
             {suggestingCategory ? 'AI...' : 'AI Suggest'}
           </button>
@@ -93,35 +93,35 @@ export default function ExtraChargeForm({ jobId, charge, onSave, onCancel }: Ext
       </div>
 
       <div>
-        <label className="block text-sm font-medium mb-1">Amount ($) *</label>
+        <label className="block text-sm font-medium mb-2 text-royal-espresso">Amount ($) *</label>
         <input
           type="number"
           step="0.01"
           required
           value={formData.amount}
           onChange={(e) => setFormData({ ...formData, amount: parseFloat(e.target.value) })}
-          className="w-full border rounded px-3 py-2"
+          className="w-full bg-royal-cream border border-royal-stone rounded-lg px-4 py-2.5 transition-all duration-200 focus:outline-none focus:border-crown-terracotta focus:shadow-warm"
         />
       </div>
 
       <div>
-        <label className="block text-sm font-medium mb-1">Tax Amount ($)</label>
+        <label className="block text-sm font-medium mb-2 text-royal-espresso">Tax Amount ($)</label>
         <input
           type="number"
           step="0.01"
           value={formData.taxAmount}
           onChange={(e) => setFormData({ ...formData, taxAmount: parseFloat(e.target.value) })}
-          className="w-full border rounded px-3 py-2"
+          className="w-full bg-royal-cream border border-royal-stone rounded-lg px-4 py-2.5 transition-all duration-200 focus:outline-none focus:border-crown-terracotta focus:shadow-warm"
         />
       </div>
 
       <div>
-        <label className="block text-sm font-medium mb-1">Approved By</label>
+        <label className="block text-sm font-medium mb-2 text-royal-espresso">Approved By</label>
         <input
           type="text"
           value={formData.approvedBy}
           onChange={(e) => setFormData({ ...formData, approvedBy: e.target.value })}
-          className="w-full border rounded px-3 py-2"
+          className="w-full bg-royal-cream border border-royal-stone rounded-lg px-4 py-2.5 transition-all duration-200 focus:outline-none focus:border-crown-terracotta focus:shadow-warm"
           placeholder="Name of person who approved this charge"
         />
       </div>
@@ -130,13 +130,13 @@ export default function ExtraChargeForm({ jobId, charge, onSave, onCancel }: Ext
         <button
           type="button"
           onClick={onCancel}
-          className="px-4 py-2 border rounded hover:bg-gray-100"
+          className="px-6 py-2.5 border border-royal-stone rounded-lg text-royal-brown transition-all duration-200 hover:bg-royal-stone"
         >
           Cancel
         </button>
         <button
           type="submit"
-          className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
+          className="px-6 py-2.5 bg-crown-sunset text-white rounded-lg shadow-warm transition-all duration-200 hover:shadow-warm-lg hover:-translate-y-0.5"
         >
           {charge ? 'Update Charge' : 'Add Charge'}
         </button>
