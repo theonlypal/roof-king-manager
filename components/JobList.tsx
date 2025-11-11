@@ -39,7 +39,7 @@ export default function JobList({ jobs }: JobListProps) {
               <span className="font-medium">Site:</span> {job.siteAddress}
             </p>
           )}
-          {job.initialEstimateAmount !== null && (
+          {job.initialEstimateAmount != null && (
             <p className="text-sm text-gray-600 mb-1">
               <span className="font-medium">Estimate:</span> ${job.initialEstimateAmount.toFixed(2)}
             </p>

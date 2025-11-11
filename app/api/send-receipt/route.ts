@@ -48,7 +48,7 @@ export async function POST(request: NextRequest) {
         },
         to: [{ email: body.customerEmail, name: body.job.customerName }],
         cc: [{ email: body.officeEmail, name: companyInfo.name }],
-        subject: `Extra Work Receipt – ${body.job.title}`,
+        subject: `Extra Work Receipt - ${body.job.title}`,
         htmlContent,
         attachments: [{
           name: `Receipt_${body.job.title.replace(/[^a-zA-Z0-9]/g, '_')}.pdf`,

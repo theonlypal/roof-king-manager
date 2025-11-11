@@ -152,7 +152,7 @@ export default function JobDetail() {
                 <dd>{job.siteAddress}</dd>
               </div>
             )}
-            {job.initialEstimateAmount !== null && (
+            {job.initialEstimateAmount != null && (
               <div>
                 <dt className="font-medium text-gray-600">Initial Estimate</dt>
                 <dd>${job.initialEstimateAmount.toFixed(2)}</dd>
