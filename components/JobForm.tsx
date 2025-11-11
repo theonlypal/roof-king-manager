@@ -5,7 +5,7 @@ import { Job } from '@/lib/types';
 
 interface JobFormProps {
   job?: Job;
-  onSave: (data: Omit<Job, 'id' | 'createdAt' | 'updatedAt'>) => void;
+  onSave: (data: Omit<Job, 'id' | 'createdAt' | 'updatedAt'>, scheduledDate?: string) => void;
   onCancel: () => void;
 }
 
@@ -18,11 +18,13 @@ export default function JobForm({ job, onSave, onCancel }: JobFormProps) {
     siteAddress: job?.siteAddress || '',
     initialEstimateAmount: job?.initialEstimateAmount || null,
     notes: job?.notes || '',
+    scheduledDate: '',
   });
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    onSave(formData);
+    const { scheduledDate, ...jobData } = formData;
+    onSave(jobData, scheduledDate || undefined);
   };
 
   return (
@@ -101,6 +103,23 @@ export default function JobForm({ job, onSave, onCancel }: JobFormProps) {
           rows={3}
         />
       </div>
+
+      {!job && (
+        <div className="bg-accent-sage/10 border border-accent-sage rounded-lg p-4">
+          <label className="block text-sm font-medium mb-2 text-royal-espresso">
+            Scheduled Date & Time (Optional)
+            <span className="block text-sm font-normal text-royal-taupe mt-1">
+              Auto-creates calendar event and sends confirmation email
+            </span>
+          </label>
+          <input
+            type="datetime-local"
+            value={formData.scheduledDate}
+            onChange={(e) => setFormData({ ...formData, scheduledDate: e.target.value })}
+            className="w-full bg-royal-cream border border-royal-stone rounded-lg px-4 py-2.5 transition-all duration-200 focus:outline-none focus:border-crown-terracotta focus:shadow-warm"
+          />
+        </div>
+      )}
 
       <div className="flex gap-3 justify-end pt-2">
         <button
