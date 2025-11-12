@@ -131,7 +131,7 @@ export default function JobForm({ job, onSave, onCancel }: JobFormProps) {
         </button>
         <button
           type="submit"
-          className="px-6 py-2.5 bg-crown-sunset text-white rounded-lg shadow-warm transition-all duration-200 hover:shadow-warm-lg hover:-translate-y-0.5"
+          className="px-6 py-2.5 bg-orange-600 hover:bg-orange-700 text-white rounded-lg font-semibold shadow-lg transition-all duration-200 hover:shadow-xl hover:-translate-y-0.5"
         >
           {job ? 'Update Job' : 'Create Job'}
         </button>
