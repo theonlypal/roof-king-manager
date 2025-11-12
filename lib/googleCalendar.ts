@@ -201,7 +201,7 @@ export class GoogleCalendarService {
 
     return {
       summary: job.title,
-      description: `Job for ${job.customerName}\n\n${job.notes || 'No additional notes'}`,
+      description: `Customer: ${job.customerName}\nEmail: ${job.customerEmail}\nPhone: ${job.customerPhone || 'N/A'}\n\nNotes: ${job.notes || 'No additional notes'}`,
       location: job.siteAddress || '',
       start: {
         dateTime: startDateTime,
@@ -211,9 +211,8 @@ export class GoogleCalendarService {
         dateTime: endDateTime,
         timeZone: this.timezone,
       },
-      attendees: job.customerEmail
-        ? [{ email: job.customerEmail, displayName: job.customerName }]
-        : [],
+      // Removed attendees - service account cannot send invites without Domain-Wide Delegation
+      // Customer info included in description instead
     };
   }
 
