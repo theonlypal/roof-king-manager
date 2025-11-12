@@ -47,9 +47,26 @@ export class GoogleCalendarService {
   private timezone: string;
 
   constructor(config: CalendarConfig) {
+    // Robust private key handling - supports all formats
+    let privateKey = config.privateKey;
+
+    // Remove surrounding quotes if present
+    if (privateKey.startsWith('"') && privateKey.endsWith('"')) {
+      privateKey = privateKey.slice(1, -1);
+    }
+
+    // Replace escaped newlines with actual newlines
+    // Handle both \\n (double escaped) and \n (single escaped)
+    privateKey = privateKey.replace(/\\\\n/g, '\n').replace(/\\n/g, '\n');
+
+    // Ensure it starts and ends correctly
+    if (!privateKey.includes('-----BEGIN PRIVATE KEY-----')) {
+      throw new Error('Invalid private key format: missing BEGIN marker');
+    }
+
     const auth = new google.auth.JWT({
       email: config.serviceAccountEmail,
-      key: config.privateKey.replace(/\\n/g, '\n'), // Handle escaped newlines
+      key: privateKey,
       scopes: [
         'https://www.googleapis.com/auth/calendar',
         'https://www.googleapis.com/auth/calendar.events',
