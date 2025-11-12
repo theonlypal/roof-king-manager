@@ -136,7 +136,7 @@ export class AirtableService {
         'Business ID': this.businessId,
         'Customer': [job.customerId], // Link to customer record
         'Title': job.title,
-        'Status': job.status,
+        'Status Update': job.status,
         'Site Address': job.siteAddress || '',
         'Estimated Amount': job.estimatedAmount || 0,
         'Notes': job.notes || '',
@@ -156,7 +156,7 @@ export class AirtableService {
         'Customer': [invoice.customerId], // Link to customer record
         'Amount': invoice.amount,
         'Tax Amount': invoice.taxAmount || 0,
-        'Status': invoice.status,
+        'Status Update': invoice.status,
         'Items': JSON.stringify(invoice.items),
         'Created At': invoice.createdAt || new Date().toISOString(),
         'Due Date': invoice.dueDate || '',
@@ -169,7 +169,7 @@ export class AirtableService {
   async getJobs(status?: string): Promise<AirtableJob[]> {
     return this.retryWithBackoff(async () => {
       const filterFormula = status
-        ? `AND({Business ID} = '${this.businessId}', {Status} = '${status}')`
+        ? `AND({Business ID} = '${this.businessId}', {Status Update} = '${status}')`
         : `{Business ID} = '${this.businessId}'`;
 
       const records = await this.base(this.TABLES.JOBS)
@@ -184,7 +184,7 @@ export class AirtableService {
         businessId: record.get('Business ID') as string,
         customerId: (record.get('Customer') as string[])?.[0] || '',
         title: record.get('Title') as string,
-        status: record.get('Status') as AirtableJob['status'],
+        status: record.get('Status Update') as AirtableJob['status'],
         siteAddress: record.get('Site Address') as string,
         estimatedAmount: record.get('Estimated Amount') as number,
         notes: record.get('Notes') as string,
@@ -227,7 +227,7 @@ export class AirtableService {
           'Business ID': this.businessId,
           'Customer': [job.customerId],
           'Title': job.title,
-          'Status': job.status,
+          'Status Update': job.status,
           'Site Address': job.siteAddress || '',
           'Estimated Amount': job.estimatedAmount || 0,
           'Notes': job.notes || '',
