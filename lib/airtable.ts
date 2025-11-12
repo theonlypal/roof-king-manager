@@ -122,7 +122,6 @@ export class AirtableService {
           'Email': customer.email,
           'Phone': customer.phone || '',
           'Address': customer.address || '',
-          'Created At': customer.createdAt || new Date().toISOString(),
         });
         return record.id;
       }
@@ -140,7 +139,6 @@ export class AirtableService {
         'Site Address': job.siteAddress || '',
         'Estimated Amount': job.estimatedAmount || 0,
         'Notes': job.notes || '',
-        'Created At': job.createdAt || new Date().toISOString(),
         'Scheduled Date': job.scheduledDate || '',
       });
       return record.id;
@@ -158,7 +156,6 @@ export class AirtableService {
         'Tax Amount': invoice.taxAmount || 0,
         'Status Update': invoice.status,
         'Items': JSON.stringify(invoice.items),
-        'Created At': invoice.createdAt || new Date().toISOString(),
         'Due Date': invoice.dueDate || '',
       });
       return record.id;
@@ -231,7 +228,6 @@ export class AirtableService {
           'Site Address': job.siteAddress || '',
           'Estimated Amount': job.estimatedAmount || 0,
           'Notes': job.notes || '',
-          'Created At': job.createdAt || new Date().toISOString(),
           'Scheduled Date': job.scheduledDate || '',
         },
       }));
